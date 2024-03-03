@@ -6,7 +6,7 @@ const Homescreen = () => {
 
   return(
       <SafeAreaView>
-          <ScrollView>
+      <ScrollView>
       <View>
         <Text style={styles.text}> GOOT</Text>
       </View> 
@@ -18,20 +18,20 @@ const Homescreen = () => {
         <Paragraph style = {{fontWeight: 'bold', fontSize:24 , color: 'white', paddingTop: 5, paddingLeft:22 }}>together.</Paragraph>
         <Paragraph style = {{fontWeight: 'bold', fontSize:20 , color: 'white', paddingTop: 43, paddingLeft:170 }}>coming soon...</Paragraph>
       </View>
-      <View style = {styles.container}>
+      
+      <View style = {styles.row1}>
       <TouchableOpacity style = {[styles.notesCard,styles.card]}>
         {/* <Title style = {{fontWeight: 'bold', fontSize: 24,padding: 15, paddingLeft: 35}}>Notes</Title> */}
       </TouchableOpacity>
       <TouchableOpacity style = {[styles.todolistCard, styles.card]}/> 
-     </View>
+      </View>
+
       <View style = {styles.row2}>
       <TouchableOpacity style = {[styles.updatesCard,styles.card]}/> 
       <TouchableOpacity style = {[styles.snippetsCard,styles.card]}/> 
       </View>
-     </ScrollView>
-
- {/* </View> */}
-<View style = {styles.navbar}/>
+      </ScrollView>
+      <View style = {styles.navbar}/>
 
       </SafeAreaView>
     )
@@ -64,21 +64,12 @@ const styles = StyleSheet.create({
       backgroundColor: '#E960FF',
       elevation: 5,
   },
-  
-   columnContainer:{
-    flex:1,
-    
-    flexDirection:'row',
-    marginTop:30,
-   },
-    container:{
+    row1:{
       flex: 1,
       flexDirection: 'row',
-       marginTop:'70%',
-       justifyContent:'center',
-      // margin:10 ,
+      marginTop:'70%',
+      justifyContent:'center',
     },
-
     row2:{
       flex: 1,
       flexDirection:'row',
@@ -86,18 +77,14 @@ const styles = StyleSheet.create({
       paddingBottom:70,
     },
      card:{
-     
       alignContent:'center',
       margin:10,
-
       width: 160,
       height : 229,
-      //height: 234,
       borderRadius:15,
       elevation:5,
     },
     notesCard:{
-     // marginRight: 20,
       backgroundColor: '#F1F58F',
     },  
     todolistCard:{
