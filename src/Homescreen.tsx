@@ -2,13 +2,25 @@ import React from 'react';
 import { ImageComponent, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Button, Image, Tile } from 'react-native-elements';
 import { Paragraph, Title } from 'react-native-paper';
+import { GoogleGenerativeAI } from '@google/generative-ai';
+
+const genAI = new GoogleGenerativeAI("AIzaSyA5Gkqjl_8Pf4ZfrTRzOuhWQKTkYB7FYAg");
+async function run(){
+const model = genAI.getGenerativeModel({model:"gemini-pro"});
+const prompt = "What is the colour of sky in one word";
+const result = await model.generateContent(prompt);
+const response = await result.response;
+const text = response.text();
+console.log(text);
+}
 const Homescreen = () => {
+  run();
 
   return(
       <SafeAreaView>
       <ScrollView>
       <View>
-        <Text style={styles.text}> GOOT</Text>
+        <Text style={styles.text}>hihs </Text>
       </View> 
      
       <View style = {styles.underlappingCard}/> 
