@@ -17,7 +17,7 @@ const loginpage = () => {
       setMessage('');
       console.log(isUserLogin);
 
-      navigation.navigate('Home', {
+      navigation.navigate('Homescreen', {
         email: isUserLogin.user.email,
         uid: isUserLogin.user.uid,
       });
