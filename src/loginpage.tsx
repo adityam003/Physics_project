@@ -1,19 +1,63 @@
 import React, { ImageBackground, Pressable, SafeAreaView, View } from 'react-native';
 import { Text,TextInput, StyleSheet} from 'react-native';
 import { ScreenHeight, ScreenWidth } from 'react-native-elements/dist/helpers';
+import auth from '@react-native-firebase/auth';
+
+export default function LoginScreen() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
 
 const loginpage = () => {
+     try {
+      const isUserLogin = await auth().signInWithEmailAndPassword(
+        email,
+        password,
+      );
+      setMessage('');
+      console.log(isUserLogin);
+
+      navigation.navigate('Home', {
+        email: isUserLogin.user.email,
+        uid: isUserLogin.user.uid,
+      });
+    } catch (err) {
+      console.log(err);
+
+      setMessage(err.message);
+    }
+  };
+    
     return(
         <SafeAreaView>
 
         <ImageBackground  style={{width:ScreenWidth,height:ScreenHeight}} source={require("../assets/photos/fullscreenD.png")} resizeMode={'cover'}>
-            <TextInput placeholder='Username' style={[styles.input,{marginTop:'88%',marginLeft:38}]}/>
-            <TextInput placeholder='Password' style={[styles.input,{marginTop:'7%', margin:38}]}/>
-             <Pressable style={styles.button}>
+            <TextInput 
+                placeholder='Enter your Email' 
+                value={email}
+                onChangeText={value => setEmail(value)}
+                style={[styles.input,{marginTop:'88%',marginLeft:38}]}
+            />
+            <TextInput 
+                placeholder='Password' 
+                value={password}
+                onChangeText={value => setPassword(value)}
+                secureTextEntry={true}
+                style={[styles.input,{marginTop:'7%', margin:38}]}
+            />
+             <Pressable
+                 style={styles.button}>
+                 onPress={() => loginpage()}>
                 <Text style={styles.buttonText}>Submit</Text>
              </Pressable>
+            
              <View style={styles.whiteBox}>
-              <Text style={styles.whiteBoxText}>Don't have an account ?<Text style={{fontWeight:'bold'}}> Sign up</Text></Text>
+              <Text 
+                  style={styles.whiteBoxText}>Don't have an account ?
+                  <Text
+                      style={{fontWeight:'bold'}}> Sign up
+                  </Text>
+              </Text>
              </View>
              {/* <View style={{width:312,height:3,backgroundColor:'black' , marginTop:'7%',marginLeft:34}} /> */}
         </ImageBackground>
