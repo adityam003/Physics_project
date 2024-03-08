@@ -31,7 +31,14 @@ const loginpage = () => {
     return(
         <SafeAreaView>
 
-        <ImageBackground  style={{width:ScreenWidth,height:ScreenHeight}} source={require("../assets/photos/fullscreenD.png")} resizeMode={'cover'}>
+        <ImageBackground  
+          style={ 
+             {
+               width:ScreenWidth,height:ScreenHeight
+             }
+          } 
+          source={require("../assets/photos/fullscreenD.png")}
+          resizeMode={'cover'}>
             <TextInput 
                 placeholder='Enter your Email' 
                 value={email}
